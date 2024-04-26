@@ -6,7 +6,7 @@ on:
     branches: main
 
 jobs:
-   listfiles:
+  listfiles:
     runs-on: ubuntu-latest
     outputs:
       changedfiles: ${{ steps.listchangedfiles.outputs.changedfiles }}
@@ -34,7 +34,7 @@ jobs:
 
 
         
-    changedfiles:
+  changedfiles:
       needs: listfiles
       runs-on: ubuntu-latest
       strategy:
