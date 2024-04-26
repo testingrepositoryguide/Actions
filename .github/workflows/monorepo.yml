@@ -30,6 +30,7 @@ jobs:
             ARRAY+=($file)
           done
           echo "DEBUG: All changed files: $ARRAY"
+          echo "${ARRAY[@]}"
           matrix=$(jq --compact-output --null-input '$ARGS.positional' --args -- "${ARRAY[@]}")
           echo "DEBUG: Json Matrix: $matrix"
           echo "changedfiles=$(echo ${matrix})" >> GITHUB_OUTPUT
