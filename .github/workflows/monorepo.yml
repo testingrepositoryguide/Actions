@@ -35,6 +35,10 @@ jobs:
           echo "changedfiles=${matrix}" >> GITHUB_OUTPUT
           echo $changedfiles
 
+      - name: Test
+        run: |
+          echo ${{ steps.listchangedfiles.outputs.changedfiles }}
+
 
   test:
     needs: listfiles
