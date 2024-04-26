@@ -1,6 +1,6 @@
 echo "hello I am Microservice1"
 
-echo "Test 5"
+echo "Test 6"
 
 sleep 10
 
