@@ -38,12 +38,13 @@ jobs:
 
   test:
     needs: listfiles
+    runs-on: ubuntu-latest
     steps:
       - name: Test
         run: |
           echo "DEBUG: ${{ needs.listfiles.outputs.changedfiles != '[]' }}"     
 
-          
+
   changedfiles:
     needs: listfiles
     if: ${{ needs.listfiles.outputs.changedfiles != '[]' }}
