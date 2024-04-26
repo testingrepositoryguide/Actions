@@ -20,6 +20,7 @@ jobs:
           files: 'Micros/'
 
       - name: List all changed files
+        id: listchangedfiles
         env:
           ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
         run: |
@@ -30,7 +31,7 @@ jobs:
           done
           echo "DEBUG: All changed files: $ARRAY"
           matrix=$(jq --compact-output --null-input '$ARGS.positional' --args -- "${ARRAY[@]}")
-          echo $matrix
+          echo "DEBUG: Json Matrix: $matrix"
           echo "changedfiles=${matrix}" >> GITHUB_OUTPUT
 
 
