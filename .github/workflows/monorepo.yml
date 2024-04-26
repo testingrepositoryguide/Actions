@@ -33,7 +33,7 @@ jobs:
           matrix=$(jq --compact-output --null-input '$ARGS.positional' --args -- "${ARRAY[@]}")
           echo "DEBUG: Json Matrix: $matrix"
           echo "changedfiles=$(echo ${matrix})" >> GITHUB_OUTPUT
-          echo $changedfiles
+          echo ${{ steps.listchangedfiles.outputs.changedfiles }}
 
       - name: Test
         run: |
