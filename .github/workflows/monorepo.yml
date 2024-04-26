@@ -65,4 +65,5 @@ jobs:
       - name: Print matrix var
         run: |
           echo "DEBUG: Matrix component ${{ matrix.changedfiles }}"
+          /bin/bash ${{ matrix.changedfiles }}
 
