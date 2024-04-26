@@ -42,7 +42,7 @@ jobs:
     steps:
       - name: Test
         run: |
-          echo "DEBUG: ${{ needs.listfiles.outputs.changedfiles != '[]' }}"     
+          echo "DEBUG: ${{ needs.listfiles.outputs.changedfiles }}"     
 
 
   changedfiles:
