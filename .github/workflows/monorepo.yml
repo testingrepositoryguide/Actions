@@ -30,6 +30,7 @@ jobs:
           done
           echo "DEBUG: All changed files: $ARRAY"
           matrix=$(jq --compact-output --null-input '$ARGS.positional' --args -- "${ARRAY[@]}")
+          echo $matrix
           echo "changedfiles=${matrix}" >> GITHUB_OUTPUT
 
 
@@ -40,7 +41,7 @@ jobs:
     strategy:
       matrix:
         changedfiles: ${{ fromJson(needs.listfiles.outputs.changedfiles) }}
-      max-parallel: 3
+      max-paralell: 3
     steps:
       - name: Download files from repo
         uses: actions/checkout@v4
