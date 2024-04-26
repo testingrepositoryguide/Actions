@@ -6,7 +6,7 @@ on:
     branches: main
 
 jobs:
-   changed_files:
+   listfiles:
     runs-on: ubuntu-latest
     outputs:
       changedfiles: ${{ steps.listchangedfiles.outputs.changedfiles }}
@@ -29,3 +29,24 @@ jobs:
             ARRAY+=($file)
           done
           echo "DEBUG: All changed files: $ARRAY"
+          matrix=$(jq --compact-output --null-input '$ARGS.positional' --args -- "${ARRAY[@]}")
+          echo "changedfiles=${matrix}" >> GITHUB_OUTPUT
+
+
+        
+    changedfiles:
+      needs: listfiles
+      runs-on: ubuntu-latest
+      strategy:
+        matrix:
+          changedfiles: ${{ fromJson(needs.listfiles.outputs.changedfiles) }}
+        max-paralell: 3
+      steps:
+
+        - name: Download files from repo
+          uses: actions/checkout@v4
+
+        - name: Print matrix var
+          run: |
+            echo "DEBUG: Matrix component"
+
