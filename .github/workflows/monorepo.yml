@@ -32,9 +32,8 @@ jobs:
           echo "DEBUG: All changed files: $ARRAY"
           echo "${ARRAY[@]}"
           matrix=$(jq --compact-output --null-input '$ARGS.positional' --args -- "${ARRAY[@]}")
-          m=$(echo $matrix | tr -d \")
-          echo "DEBUG: Json Matrix: $m"
-          echo "changedfiles=$(echo ${m})" >> $GITHUB_OUTPUT
+          echo "DEBUG: Json Matrix: $matrix"
+          echo "changedfiles=$(echo ${matrix})" >> $GITHUB_OUTPUT
           echo ${{ steps.listchangedfiles.outputs.changedfiles }}
 
       - name: Test
