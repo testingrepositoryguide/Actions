@@ -37,6 +37,7 @@ jobs:
         
   changedfiles:
     needs: listfiles
+    if: ${{ needs.listfiles.outputs.changedfiles != '[]' }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
