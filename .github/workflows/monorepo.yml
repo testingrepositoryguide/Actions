@@ -40,7 +40,7 @@ jobs:
     strategy:
       matrix:
         changedfiles: ${{ fromJson(needs.listfiles.outputs.changedfiles) }}
-      max-paralell: 3
+      max-parallel: 3
     steps:
       - name: Download files from repo
         uses: actions/checkout@v4
