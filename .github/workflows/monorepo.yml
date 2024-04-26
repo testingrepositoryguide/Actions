@@ -38,16 +38,7 @@ jobs:
 
       - name: Test
         run: |
-          echo ${{ steps.listchangedfiles.outputs.changedfiles }}
-
-
-  test:
-    needs: listfiles
-    runs-on: ubuntu-latest
-    steps:
-      - name: Test
-        run: |
-          echo "DEBUG: ${{ needs.listfiles.outputs.changedfiles }}"     
+          echo ${{ steps.listchangedfiles.outputs.changedfiles }}   
 
 
   changedfiles:
