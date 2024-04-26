@@ -36,7 +36,14 @@ jobs:
           echo $changedfiles
 
 
-        
+  test:
+    needs: listfiles
+    steps:
+      - name: Test
+        run: |
+          echo "DEBUG: ${{ needs.listfiles.outputs.changedfiles != '[]' }}"     
+
+          
   changedfiles:
     needs: listfiles
     if: ${{ needs.listfiles.outputs.changedfiles != '[]' }}
